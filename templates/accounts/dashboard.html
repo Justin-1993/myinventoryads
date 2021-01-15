@@ -27,7 +27,7 @@
         
         <h3>My Listings</h3>
         <ul>
-            
+{% if my_listings %}   
     {% for my_listing in my_listings%}
             <li><a href="{% url 'listings'%}{{my_listing.id}}"><strong>{{my_listing.title}} </strong>Part_number: {{my_listing.part_number}}</a> <a style="color: red;" href="{% url 'delete_listing' my_listing.id %}">Delete</a>
 
