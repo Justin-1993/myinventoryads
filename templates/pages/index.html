@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content%}
+{% include 'partials/_alerts.html'%}
+<section id="search-box">
+  <div class="container">
+  <div class="jumbotron">
+    <div id="jumbo-text-container" class="container">
+      <h2 id="jumbo-text" class="display-4">Search For Your Industrial and Automotive Parts!</h2>
+  </div>
+    <form  action="{% url 'search'%}">
+      <div id="front-search" class="form-row">
+
+        <div class="col-md-4">
+          <label ></label>
+          <input class="form-control" type="text" name="keywords" placeholder="Part#/Keywords/Company">
+        </div>
+
+        <div class="col-md-4">
+          <label ></label>
+          <select class="form-control" name="category" >
+            <option selected="true" disabled="disabled">Category</option>
+            {% for category in categories %}
+              <option value="{{category}}">{{category}}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="col-md-4">
+          <label></label>
+          <input class="form-control" type="text" name="zip" placeholder="Zip Code">
+        </div>
+      </div>
+      <div id="button-div">
+        <button class="btn btn-danger col-md-12" type="submit">Search</button>
+      </div>
+      
+    </form>
+  </div>
+</div>
+</section>
+
+<section id="below-search">
+  <div class="container">
+    <h3>Welcome! We invite you to join our community of industrial/automotive parts advertisers and purchasers. Our goal is to bring together buyers and sellers of parts in an easy to navigate and affordable platform. Visit our FAQS for more information.</h3>
+  </div>
+  <div class="container">
+    <p id="coupon">*Free One Time 90 Day Subscription (Email us for the coupon code)</p>
+  </div>
+</section>
+
+
+{% endblock %}

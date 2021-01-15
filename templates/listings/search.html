@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+<h1>Search</h1>
+{% if listings %}
+    {% for listing in listings %}
+    <section id="search-container">
+    <div class="container">
+    <div class="card" style="width: 70%;">
+      <h5 class="card-title">{{listing.title}}</h5>
+      <a href="{% url 'listing' listing.id%}"><img class="card-img-top listing_img_search img-main" src="{{listing.photo_main.url}}" alt="Card image cap"></a>
+        
+        <div class="card-body">
+        
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Part Number: {{listing.part_number}}</li>
+          <li class="list-group-item">Price: ${{listing.price}}</li>
+          
+        </ul>
+        <div class="card-body">
+            <a href="{% url 'listing' listing.id%}">More Info</a>
+        </div>
+      </div>
+    </div>
+  </section>
+    {% endfor %}
+{% else %}
+    <h1>No listings</h1>
+{% endif%}
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content%}
+{% include 'partials/_alerts.html'%}
+<h1>Dashboard</h1>
+
+{% if user.is_staff%}
+    <section>
+        <form enctype="multipart/form-data" action=" {% url 'add_listing'%}" method="post">
+            <div class="dash-add-listing">
+                <h1>Add Listing</h1>
+        {% csrf_token%}
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+          </div>
+
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select class="form-control" name="category" >
+                <option selected="true" disabled="disabled">Category</option>
+                {% for category in categories %}
+                  <option value="{{category}}">{{category}}</option>
+                {% endfor %}
+              </select>
+          </div>
+
+          <div class="form-group">
+            <label for="part_number">Part number</label>
+            <input type="text" class="form-control" id="part_number" name="part_number" placeholder="Part number">
+          </div>
+
+          <div class="form-group">
+            <label for="contact_email">Contact email</label>
+            <input type="email" class="form-control" id="contact_email" name="contact_email" placeholder="Contact email">
+          </div>
+
+          <div class="form-group">
+            <label for="website_url">Website url</label>
+            <input type="url" pattern="https://.*" class="form-control" id="website_url" name="website_url" placeholder="https://example.com">
+          </div>
+
+          <div class="form-group">
+            <label for="contact_number">Contact Number</label>
+            <input type="tel" class="form-control" id="contact_number" name="contact_number" placeholder="Contact Number">
+          </div>
+
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" class="form-control" id="address" name="address" placeholder="Address">
+          </div>
+
+          <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" class="form-control" id="city" name="city" placeholder="City">
+          </div>
+
+          <div class="form-group">
+            <label for="state">State</label>
+            <input type="text" class="form-control" id="state" name="state" placeholder="State">
+          </div>
+
+          <div class="form-group">
+            <label for="zipcode">Zip Code</label>
+            <input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="Zip Code">
+          </div>
+
+          <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" class="form-control" id="price" name="price" placeholder="Price">
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="photo_main">Image Upload</label>
+            <input type="file" accept="image/*" class="form-control-file" name="photo_main" id="photo_main">
+          </div>
+          <button type="submit" class="btn btn-dark col-md-12">Add Listing</button>
+        </div>
+        </form>
+    </section>
+{% endif%}
+
+{% endblock %}

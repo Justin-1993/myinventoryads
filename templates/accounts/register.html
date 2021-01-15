@@ -1,0 +1,50 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<section id="register-form">
+<div class="container">
+  {% include 'partials/_alerts.html'%}
+  <h1>Register</h1>
+  <form action="{% url 'register' %}" method="POST">
+    {% csrf_token %}
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="first_name">First Name</label>
+        <input class="form-control" type="text" name="first_name" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="last_name">Last Name</label>
+        <input class="form-control" type="text" name="last_name" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input class="form-control" type="text" name="username" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input class="form-control" type="email" name="email" required>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="password2">Password</label>
+        <input class="form-control" type="password" name="password" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="password">Confirm Password</label>
+        <input class="form-control" type="password" name="password2" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck" required>
+        <label class="form-check-label" for="gridCheck">
+          I Agree to the Terms of Use
+        </label>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-dark col-md-12">Register</button>
+  </form>
+</div>
+</section>
+{% endblock %}

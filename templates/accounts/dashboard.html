@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content%}
+{% include 'partials/_alerts.html'%}
+<h1>Dashboard</h1>
+{% if user.is_staff %}
+<section>
+    <div class="row">
+    <div class="col-sm-2 categories-button ">
+        <a class="btn btn-dark btn-md active cat-button" role="button" aria-pressed="true" href="{% url 'add_listing'%}">Add New Listing</a>
+    </div>
+    {% if user.is_staff and not user.profile.is_vip %}
+    <div class="col-sm-2 categories-button">
+        <a class="btn btn-dark btn-md active cat-button" role="button" aria-pressed="true" href="{% url 'vip'%}">Upgrade to VIP</a>
+    </div>
+    {% elif user.is_staff and user.profile.is_vip%}
+    <div class="col-sm-2 categories-button ">
+        <a class="btn btn-danger btn-md active cat-button" role="button" aria-pressed="true" href="{% url 'cancel_vip'%}">Cancel VIP</a>
+    </div>
+    {% endif %}
+
+    <div class="col-sm-2 categories-button ">
+        <a class="btn btn-danger btn-md active cat-button" role="button" aria-pressed="true" href="{% url 'cancel_membership'%}">Cancel Membership</a>
+    </div>
+</div>
+    <div>
+        
+        <h3>My Listings</h3>
+        <ul>
+            
+    {% for my_listing in my_listings%}
+            <li><a href="{% url 'listings'%}{{my_listing.id}}"><strong>{{my_listing.title}} </strong>Part_number: {{my_listing.part_number}}</a> <a style="color: red;" href="{% url 'delete_listing' my_listing.id %}">Delete</a>
+
+            
+            
+            </li>
+        
+    {% endfor %}
+        </ul>
+    </div>
+</section>
+{% endif %}
+{% endblock %}
+
+class="btn btn-light"
