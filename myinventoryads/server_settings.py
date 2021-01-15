@@ -21,3 +21,5 @@ DATABASES = {
         'HOST': 'ec2-18-210-214-86.compute-1.amazonaws.com',
     }
 }
+
+STATIC_ROOT = BASE_DIR /'staticfiles'
