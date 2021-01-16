@@ -34,7 +34,7 @@ def terms(request):
     return render(request, 'pages/terms.html')
 
 def pricing(request):
-    return render(request, 'pages/pricing.html')
+    return render(request, 'pages/membership.html')
 
 def advertisers(request):
     return render(request, 'pages/advertisers.html')
