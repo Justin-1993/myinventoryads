@@ -29,6 +29,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'myinventoryads.urls'
@@ -130,7 +131,7 @@ DEBUG_PROPAGATE_EXCEPTIONS = True
 
 COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
 # Media Folder Settings
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Messages
 
