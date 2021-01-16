@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
 import django_heroku
+import storages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -18,7 +19,9 @@ INSTALLED_APPS = [
     'categories.apps.CategoriesConfig',
     'accounts.apps.AccountsConfig',
     'django.contrib.humanize',
-    'membership.apps.MembershipConfig'
+    'membership.apps.MembershipConfig',
+    'storages'
+    
 ]
 
 MIDDLEWARE = [
@@ -144,6 +147,7 @@ MESSAGE_TAGS = {
 try:
     from .local_settings import *
 except ImportError:
+    pass
     try:
         from .server_settings import *
     except ImportError:

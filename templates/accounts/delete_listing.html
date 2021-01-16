@@ -9,7 +9,7 @@
     <div class="container">
     <div class="card" style="width: 70%;">
       <h5 class="card-title">{{listing.title}}</h5>
-      <a href="{% url 'listing' listing.id%}"><img class="card-img-top listing_img_search img-main" src="{{listing.photo_main.url}}" alt="Card image cap"></a>
+      <a href="{% url 'listing' listing.id%}"><img class="card-img-top listing_img_search img-main" src="{{listing.photo_main.url}}" onerror='this.onerror=null;this.src="https://image.shutterstock.com/image-vector/no-image-available-sign-absence-260nw-373244122.jpg";'  alt="Card image cap"></a>
         
         <div class="card-body">
         
