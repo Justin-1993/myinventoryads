@@ -147,7 +147,6 @@ MESSAGE_TAGS = {
 try:
     from .local_settings import *
 except ImportError:
-    pass
     try:
         from .server_settings import *
     except ImportError:
