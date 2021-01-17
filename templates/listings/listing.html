@@ -8,13 +8,13 @@
       <div class="row">
         <div class="col-md-9">
           <!-- Home Main Image -->
-          <img src="{{listing.photo_main.url}}" alt="" class="img-main img-fluid mb-3">
+          <img src="{{listing.photo_main.url}}" alt="" onerror='this.onerror=null;this.src="https://image.shutterstock.com/image-vector/no-image-available-sign-absence-260nw-373244122.jpg";' class="img-main img-fluid mb-3">
           <!-- Thumbnails -->
           <div class="row mb-5 thumbs">
             {% if listing.photo_1 %}
             <div class="col-md-2">
               <a href="{{listing.photo_1.url}}" data-lightbox="home-images">
-                <img src="{{listing.photo_1.url}}" alt="" class="img-fluid">
+                <img src="{{listing.photo_1.url}}"  alt="" class="img-fluid">
               </a>
             </div>
             {% endif %}
