@@ -34,7 +34,7 @@
             <li>Priority email support</li>
             <li>Help center access</li>
           </ul>
-          <a href="{% url 'standard'%}" type="button" class="btn btn-lg btn-block btn-dark" >Sign-Up</a>
+          <a href="{% url 'register'%}" type="button" class="btn btn-lg btn-block btn-dark" >Sign-Up</a>
         </div>
       </div>
       <div class="card mb-4 box-shadow">
@@ -44,30 +44,32 @@
         <div class="card-body">
           <h1 class="card-title pricing-card-title">$29.99 <small class="text-muted">/ mo</small></h1>
           <ul class="list-unstyled mt-3 mb-4">
-            <li>Your ads show up first!</li>
+            <li>Your ads show up above standard users!</li>
             <li>Phone and email support</li>
             <li>Help center access</li>
           </ul>
-          <a href="{% url 'vip'%}" type="button" class="btn btn-lg btn-block btn-dark" >Sign-Up</a>
+          <a href="{% url 'register'%}" type="button" class="btn btn-lg btn-block btn-dark" >Sign-Up</a>
         </div>
       </div>
 
 
       {% elif user.is_authenticated %}
-      <div class="card mb-4 box-shadow">
-        <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Standard</h4>
-        </div>
-        <div class="card-body">
-          <h1 class="card-title pricing-card-title">$15.99 <small class="text-muted">/ mo</small></h1>
-          <ul class="list-unstyled mt-3 mb-4">
-            <li>List Ads!</li>
-            <li>Priority email support</li>
-            <li>Help center access</li>
-          </ul>
-          <a href="{% url 'standard'%}" type="button" class="btn btn-lg btn-block btn-dark" >Sign-Up</a>
-        </div>
-      </div>
+        {% if not user.is_staff %}
+          <div class="card mb-4 box-shadow">
+            <div class="card-header">
+              <h4 class="my-0 font-weight-normal">Standard</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title">$15.99 <small class="text-muted">/ mo</small></h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>List Ads!</li>
+                <li>Priority email support</li>
+                <li>Help center access</li>
+              </ul>
+              <a href="{% url 'standard'%}" type="button" class="btn btn-lg btn-block btn-dark" >Upgrade</a>
+            </div>
+          </div>
+        {% endif %}
       <div class="card mb-4 box-shadow">
         <div class="card-header">
           <h4 class="my-0 font-weight-normal">VIP</h4>
@@ -75,11 +77,11 @@
         <div class="card-body">
           <h1 class="card-title pricing-card-title">$29.99 <small class="text-muted">/ mo</small></h1>
           <ul class="list-unstyled mt-3 mb-4">
-            <li>Your ads show up first!</li>
+            <li>Your ads show up above standard users!</li>
             <li>Phone and email support</li>
             <li>Help center access</li>
           </ul>
-          <a href="{% url 'vip'%}" type="button" class="btn btn-lg btn-block btn-dark" >Sign-Up</a>
+          <a href="{% url 'vip'%}" type="button" class="btn btn-lg btn-block btn-dark" >Upgrade</a>
         </div>
       </div>
       {% endif %}

@@ -1,11 +1,37 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content%}
 
 <h1>Search</h1>
+<section id="search-container">
 {% if listings %}
     {% for listing in listings %}
-    <section id="search-container">
+      {% if listing.user.profile.is_vip %}
+    <div class="container">
+    <div class="card " style="width: 70%;">
+      <h3>VIP</h3>
+      <h5 class="card-title">{{listing.title}}</h5>
+      <a href="{% url 'listing' listing.id%}"><img class="card-img-top listing_img_search img-main" src="{{listing.photo_main.url}}" onerror='this.onerror=null;this.src="https://image.shutterstock.com/image-vector/no-image-available-sign-absence-260nw-373244122.jpg";' alt="Card image cap"></a>
+        
+        <div class="card-body">
+        
+        </div>
+        <ul class="list-group   list-group-flush">
+          <li class="list-group-item">Part Number: {{listing.part_number}}</li>
+          <li class="list-group-item">Price: ${{listing.price}}</li>
+          
+        </ul>
+        <div class="card-body">
+            <a href="{% url 'listing' listing.id%}">More Info</a>
+        </div>
+      </div>
+    </div>
+  
+      {% endif %}
+    {% endfor %}
+
+    {% for listing in listings %}
+      {% if not listing.user.profile.is_vip %}
     <div class="container">
     <div class="card" style="width: 70%;">
       <h5 class="card-title">{{listing.title}}</h5>
@@ -24,8 +50,9 @@
         </div>
       </div>
     </div>
-  </section>
+      {% endif %}
     {% endfor %}
+  </section>
 {% else %}
     <h1>No listings</h1>
 {% endif%}

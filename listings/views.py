@@ -4,9 +4,14 @@ from django.db.models import Q
 
 from categories.models import Categorie
 from .models import Listing
+from membership.models import Vip
 
 def index(request):
-    return render(request, 'listings/listings.html',)
+    all_listings = Listing.objects.all()
+    context = {
+        'listings': all_listings,
+    }
+    return render(request, 'listings/listings.html',context)
 
 def listing(request, listing_id):
     listing = get_object_or_404(Listing, pk=listing_id)
@@ -17,6 +22,7 @@ def listing(request, listing_id):
     return render(request, 'listings/listing.html', context)
 
 def search(request):
+    
     queryset_list = Listing.objects.all()
 
     if 'keywords' in request.GET:
